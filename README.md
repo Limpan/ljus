@@ -1,3 +1,15 @@
 # micropython-ljus
 
 Package that aims to simplify lighting and animation of LEDs. Primarily for RP2040 and APA102 LEDs.
+
+# Upload to PyPI
+
+First create source distribution package.
+```
+python3 setup.py sdist
+```
+
+Then upload to PyPI.
+```
+twine upload dist/*.tar.gz
+```
