@@ -6,24 +6,25 @@ class Strip():
         self.brightness = brightness
         self._pixels = [(0xff, 0, 0, 0)] * self._n
 
-    def _color(self, value):
+    def _color(self, *value):
         if not len(value) == 3:
             raise ValueError("Got tuple of length {} when expecting 3.".format(len(value)))
 
         br = 0b11100000 | (int(self.brightness * 31) & 0b00011111)
         r, g, b = value
 
-        return br, r, g, b
+        return r, g, b, br
 
     def fill(self, color):
-        self._pixels[::] = [color] * len(self)
+        r, g, b = color
+        self._pixels[::] = [self._color(r, g, b)] * len(self)
 
     def __len__(self):
         return self._n
 
     def __setitem__(self, index, value):
         if isinstance(index, slice):
-            start, stop, step = slice.indices(self._n)
+            start, stop, step = index.indices(self._n)
             for value_i, index_i in enumerate(range(start, stop, step)):
                 r, g, b = value[value_i]
                 self._pixels[index_i] = self._color(r, g, b)
