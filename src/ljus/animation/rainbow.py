@@ -2,7 +2,7 @@ from ljus.animation import Animation
 from ljus.colors import RAINBOW
 
 
-class Cycle(Animation):
+class Rainbow(Animation):
     def __init__(self, pixels, speed, colors=RAINBOW):
         super().__init__(pixels, speed)
         self.colors = colors

@@ -1,10 +1,10 @@
 
 class Strip():
-    
     def __init__(self, n, brightness = 1.0):
         self._n = n
         self.brightness = brightness
         self._pixels = [(0xff, 0, 0, 0)] * self._n
+
 
     def _color(self, *value):
         if not len(value) == 3:
@@ -15,12 +15,15 @@ class Strip():
 
         return r, g, b, br
 
+
     def fill(self, color):
         r, g, b = color
         self._pixels[::] = [self._color(r, g, b)] * len(self)
 
+
     def __len__(self):
         return self._n
+
 
     def __setitem__(self, index, value):
         if isinstance(index, slice):
@@ -31,6 +34,7 @@ class Strip():
         else:
             r, g, b = value
             self._pixels[index] = self._color(r, g, b)
+
 
     def __getitem__(self, index):
         if isinstance(index, slice):
@@ -44,6 +48,7 @@ class Strip():
         if index >= self._n or index < 0:
             raise IndexError
         return self._pixels[index]
+
 
     def _refresh(self):
         raise NotImplementedError("Must be implemented in subclass.")

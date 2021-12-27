@@ -4,7 +4,7 @@ from ljus.colors import WHITE
 
 class Fill(Animation):
     def __init__(self, pixels, speed, color=WHITE):
-        super().__init__(self, pixels, speed)
+        super().__init__(pixels, speed)
         self.color = color
 
     def draw(self):

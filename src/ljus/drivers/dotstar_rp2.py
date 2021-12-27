@@ -4,6 +4,10 @@ from ljus.pixels import Strip
 import time
 
 
+# Class for interfacing APA102 LEDs.
+# https://github.com/raspberrypi/pico-micropython-examples/blob/master/pio/pio_uart_tx.py
+
+
 class DotStar(Strip):
     _sm = None
     _bitstream = None
@@ -42,9 +46,3 @@ class DotStar(Strip):
 
         # End frame
         self._sm.put(0xffff)
-
-
-# https://github.com/raspberrypi/pico-micropython-examples/blob/master/pio/pio_uart_tx.py
-
-# https://github.com/shreyask21/neopixel_rp2040/blob/main/neopixel_rp2040.py
-# https://github.com/robert-hh/hx711/blob/master/hx711_pio.py
